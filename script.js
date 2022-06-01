@@ -3,14 +3,7 @@
 // Remember to break problem down into subproblems
 // Remember to Restate probl, list contraints, list & gen operations, use new thoughts to discover new solutions
 
-//Pseudo Code
-// 1. Work on making computerPlay function return either Rock, Papper or Scissors
-
-// 2. Then move on// OK DONE
-
-// 3. OK FINALLY FINISHED!!!!
-
-// 4. REFACTOR
+// Next, step to REFACTOR, Needs some reworking
 
 function computerPlay() {
 	// General descriptoin. Will randomly return Rock, paper, scissors
