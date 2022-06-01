@@ -1,9 +1,9 @@
 #JSON packages
-*.package-lock.json
-*.package.json
+.package-lock.json
+.package.json
 
 #Parcel-Cache
-*.parchel-cache/
+.parchel-cache
 
 # Logs
 logs
