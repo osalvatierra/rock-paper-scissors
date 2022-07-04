@@ -1,12 +1,97 @@
 <!DOCTYPE html>
+
+<style>
+	h1 {
+		width: 100%;
+		text-align: center;
+	}
+	h2 {
+		text-align: center;
+		padding: 1rem;
+		border: solid;
+		border-color: #5f9fa1;
+		width: 100%;
+		margin: 20px; padding: 2rem;
+	}
+	h3 {
+		text-align: center;
+	}
+	.choices { width: 100%; display: block; }
+	.chosen, .results { display: flex; justify-content: center; }
+	.container {
+		width: 70%;
+		margin: 20px;
+		float: left;
+	}
+	.Weapons {display: flex; justify-content: center;}
+	.points {
+		display: inline-block; width: 20%;
+	}
+	.playagain h2 {width: auto;}
+	.playerPoints,
+	.compPoints {
+	    border-color: #dad4ac;
+	    border: solid 2px;
+	    margin: 20px;
+	}
+	button {
+		background: none;
+    	border: none;
+	}
+	.rock,
+	.paper,
+	.scissor {
+		width: 250px;
+		position: relative;
+		float: left;
+		margin: 0 30px;
+	}
+	img#rock:hover, #paper:hover, #scissor:hover {
+		transition-timing-function: ease;
+    	transform: scale(1.1);
+    	transition-duration: .2s;
+    	cursor: pointer;
+	}
+</style>
 <html>
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>Rock Paper Scissors</title>
-		<script src="script.js"></script>
+
 	</head>
 	<body>
-		<p>Dynamic Content Will go Here...TESTING 1 2 3</p>
+		<h1>Choose Your Weapon</h1>
+		<div class="container">
+			<div class="Weapons">	
+				<button>
+					<h1>Rock</h1>
+					<img class="rock item" id="rock" src="img/rock.jpg" />
+				</button>
+				<button>
+					<h1>Paper</h1>
+					<img class="paper item" id="paper" src="img/paper.jpg" />
+				</button>
+				<button>
+					<h1>Scissor</h1>
+					<img class="scissor item" id="scissor" src="img/scissor.jpg" />
+				</button>
+			</div>
+			
+			<div class="choices">
+				<div class="chosen"></div>
+				<div class="results"></div>
+			</div>	
+		</div>
+
+		<div class="points">
+			<div>
+				<div class="playerPoints"><h3>Player Points</h3></div>
+				<div class="compPoints"><h3>Computer Points</h3></div>
+				<div class="playagain"><h2><a href="#">Play Again</a></h2></div>
+			</div>
+		</div>
+
+	  <script src="script.js"></script>
 	</body>
 </html>

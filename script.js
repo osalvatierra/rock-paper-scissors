@@ -1,81 +1,108 @@
 "use strict";
 
-// Remember to break problem down into subproblems
-// Remember to Restate probl, list contraints, list & gen operations, use new thoughts to discover new solutions
+let count =0;
+let compCount =0;
 
-// Next, step to REFACTOR, Needs some reworking
+const selectItem = document.querySelectorAll(".item");
+const container = document.querySelector(".container");
+let selections = document.querySelector(".chosen");
+let output = document.querySelector(".results");
+let playerPoints = document.querySelector(".playerPoints");
+let compPoints = document.querySelector(".compPoints");
+let playAgain = document.querySelector(".playagain");
 
-function computerPlay() {
-	// General descriptoin. Will randomly return Rock, paper, scissors
+//Player vars
+const h2Player = document.createElement("h2");
+const h2Comp = document.createElement("h2");
+
+//Results per round vars
+const results = document.createElement("h2");
+const pointsPlayer = document.createElement("h3");
+const pointsComp = document.createElement("h3");
+
+function outPutChoices(el, userChoice, user) {
+	el.textContent = `${user} chose ${userChoice}`;
+	selections.appendChild(el);
+}
+function outPutResults(el, text) {
+	el.textContent = text;
+	output.appendChild(el);
+}
+function outPutPoints(el, count, userPoints) {
+	el.textContent = count;
+	userPoints.appendChild(el);
+}
+function play() {
+	count = 0; compCount = 0;
+	
+	//Initialize player scores to 0 and output
+	outPutPoints(pointsPlayer, count, playerPoints);
+	outPutPoints(pointsComp, compCount, compPoints);
+
+	selectItem.forEach( (item) =>
+		item.addEventListener("click", playRound)
+	);
+}
+function reset(){
+	selectItem.forEach((item) => 
+		item.removeEventListener('click', playRound)
+	);
+}
+
+
+const computerPlay = function () {
+	// Will randomly return Rock, paper, scissors
 	let num = Math.floor(Math.random() * 3);
 	const choices = ["Rock", "Paper", "Scissor"];
-	const randChoice = choices[num];
-	return randChoice;
-}
+	let randChoice = choices[num];
+	let rand = randChoice.toLowerCase();
+	outPutChoices(h2Comp, rand, "Computer");
+	
+	return rand;
+};
 
-function playRound(playerSelection, computerSelection) {
-	// Plays a single round of RPS, returns a string declaring winner "You Lose!" Paper beats Rock
-	const player = playerSelection.toLowerCase();
-	const comp = computerSelection.toLowerCase();
+const playRound = function (e) {
+	const playerChoice = e.target.id;
+	let selection = document.createElement("div");
+	selection.classList.add("chosen");
 
-	const choices = ["rock", "paper", "scissor"];
+	outPutChoices(h2Player, playerChoice, "You");
+	const compChoice = computerPlay();
+	compChoice.toLowerCase();
 
-	let playerWins =
-		(player === "rock" && comp === "scissor") ||
-		(player === "scissor" && comp === "paper") ||
-		(player === "paper" && comp === "rock")
-			? `You Win!, ${player} beats ${comp}`
-			: player === comp
-			? "Tie, try again"
-			: `You lose!, ${comp} beats ${player}`;
+	// Logic where choices happen
+	
+	if (playerChoice === compChoice) {
+		outPutResults(results,"Tie. No points awarded. Try again.");
+	} 
+	else if (
+		(playerChoice === "rock" && compChoice === "scissor") ||
+		(playerChoice === "scissor" && compChoice === "paper") ||
+		(playerChoice === "paper" && compChoice === "rock")
+	) {
+		outPutResults( results, `You Win!, ${playerChoice} beats ${compChoice}`);
+		count++;
 
-	if (choices.indexOf(player) === -1) {
-		playerWins = "Wrong Answer, No Scores Given. Please try again";
+		//output count each time
+		outPutPoints(pointsPlayer, count, playerPoints);
+	} else {
+		outPutResults( results, `You Lose ${compChoice} beats ${playerChoice}`);
+		compCount++;
+
+		//output count each time
+		outPutPoints(pointsComp, compCount, compPoints);
 	}
 
-	return playerWins;
-}
 
-function gameRounds() {
-	let playerScore = 0;
-	let compScore = 0;
-	let message;
-	const playerSelection = [""];
-	const computerSelection = [];
-	let gameOutput;
-
-	for (let i = 0; i < 5; i++) {
-		playerSelection[i] = prompt("Choose Rock, Paper, or Scissors");
-		computerSelection[i] = computerPlay();
-
-		if (playerSelection[i]) {
-			game();
-			message = gameOutput.includes("Win")
-				? (playerScore += 1)
-				: gameOutput.includes("Tie")
-				? (playerScore += 0)
-				: gameOutput.includes("Wrong")
-				? (compScore += 0)
-				: (compScore += 1);
-
-			console.log(playerScore);
-			console.log(compScore);
-		} else {
-			alert("Wrong Answer");
-			game();
-		}
-		function game() {
-			if (playerSelection[i] === null)
-				return console.log("Game Cancelled");
-			gameOutput = playRound(playerSelection[i], computerSelection[i]);
-			console.log(gameOutput);
-		}
+	if(count === 5 ) {
+		//player Wins
+		outPutPoints(pointsPlayer, 'PLAYER WINS', playerPoints);
+		reset();
+	} 
+	if (compCount === 5) {
+		outPutPoints(pointsComp, 'COMPUTER WINS', compPoints);
+		reset();
 	}
-
-	if (playerScore > compScore) {
-		console.log(`Congrats player, you beat the computer`);
-	} else if (playerScore === compScore) {
-		console.log("It's a Tie!");
-	} else console.log(`Computer Wins!`);
-}
-gameRounds();
+};
+play();
+playAgain.addEventListener('click', play);
