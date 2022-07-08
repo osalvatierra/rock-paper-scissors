@@ -4,6 +4,13 @@
 	h1 {
 		width: 100%;
 		text-align: center;
+		height: 5rem;
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	    border: solid;
+	    border-color: #5c8bb0;
+	    border-radius: 10px;
 	}
 	h2 {
 		text-align: center;
@@ -24,15 +31,17 @@
 		float: left;
 	}
 	.Weapons {display: flex; justify-content: center;}
+	.Weapons h1 { border: none; }
 	.points {
-		display: inline-block; width: 20%;
+		display: inline-block; width: 20%; top: 7.3rem; position: relative;
 	}
+	.win {color: #0080ff;}
 	.playagain h2 {width: auto;}
 	.playerPoints,
 	.compPoints {
-	    border-color: #dad4ac;
-	    border: solid 2px;
-	    margin: 20px;
+	    border: 2px solid #0080ff;
+	    margin: 19px;
+	    height: 6.6rem;
 	}
 	button {
 		background: none;
@@ -86,8 +95,8 @@
 
 		<div class="points">
 			<div>
-				<div class="playerPoints"><h3>Player Points</h3></div>
-				<div class="compPoints"><h3>Computer Points</h3></div>
+				<div class="playerPoints"><h3>Player</h3></div>
+				<div class="compPoints"><h3>Computer</h3></div>
 				<div class="playagain"><h2><a href="#">Play Again</a></h2></div>
 			</div>
 		</div>
