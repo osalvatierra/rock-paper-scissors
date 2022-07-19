@@ -26,20 +26,15 @@ function outPutChoices(el, userChoice, user) {
 	el.textContent = `${user} chose ${userChoice}`;
 	selections.appendChild(el);
 }
-function outPutResults(el, text) {
-	el.textContent = text;
-	output.appendChild(el);
+function outPutResults(output, text, style) {
+	output.textContent = text;
+	output.classList.add(style);
+	//output.appendChild(h2);
 }
 function outPutPoints(el, count, userPoints) {
 	el.textContent = count;
 	if (count === 5) el.classList.add("win");
 	userPoints.appendChild(el);
-}
-function resultColor(el, word) {
-	//use output
-	if (output.textContent === el.textContent) {
-		el.classList.add(word);
-	}
 }
 function play() {
 	count = 0;
@@ -78,29 +73,33 @@ const playRound = function (e) {
 	const compChoice = computerPlay();
 	compChoice.toLowerCase();
 
+	function resultColor(el) {
+		output.appendChild(el);
+	}
+
 	// Logic where choices happen
 	if (playerChoice === compChoice) {
-		outPutResults(resultsTie, "Tie. No points awarded. Try again.");
-		resultColor(resultsTie, "tie");
+		outPutResults(output, "Tie. No points awarded. Try again.", "tie");
+		//resultColor(resultsTie);
 	} else if (
 		(playerChoice === "rock" && compChoice === "scissor") ||
 		(playerChoice === "scissor" && compChoice === "paper") ||
 		(playerChoice === "paper" && compChoice === "rock")
 	) {
 		outPutResults(
-			resultsWin,
-			`You Win!, ${playerChoice} beats ${compChoice}`
+			output,
+			`You Win!, ${playerChoice} beats ${compChoice}`,
+			"win"
 		);
-		resultColor(resultsWin, "win");
 		count++;
 		//output count each time
 		outPutPoints(pointsPlayer, count, playerPoints);
 	} else {
 		outPutResults(
-			resultsLose,
-			`You Lose ${compChoice} beats ${playerChoice}`
+			output,
+			`You Lose ${compChoice} beats ${playerChoice}`,
+			"lose"
 		);
-		resultColor(resultsLose, "lose");
 		compCount++;
 
 		//output count each time
