@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "jsdoc": "^3.6.10",
     "parcel": "^2.6.0"
   },
   "name": "ticktacktoe",

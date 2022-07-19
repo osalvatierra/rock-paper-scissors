@@ -5,12 +5,12 @@
 		width: 100%;
 		text-align: center;
 		height: 5rem;
-	    display: flex;
-	    justify-content: center;
-	    align-items: center;
-	    border: solid;
-	    border-color: #5c8bb0;
-	    border-radius: 10px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border: solid;
+		border-color: #5c8bb0;
+		border-radius: 10px;
 	}
 	h2 {
 		text-align: center;
@@ -18,34 +18,60 @@
 		border: solid;
 		border-color: #5f9fa1;
 		width: 100%;
-		margin: 20px; padding: 2rem;
+		margin: 20px;
+		padding: 2rem;
 	}
 	h3 {
 		text-align: center;
 	}
-	.choices { width: 100%; display: block; }
-	.chosen, .results { display: flex; justify-content: center; }
+	.choices {
+		width: 100%;
+		display: block;
+	}
+	.chosen,
+	.results {
+		display: flex;
+		justify-content: center;
+	}
 	.container {
 		width: 70%;
 		margin: 20px;
 		float: left;
 	}
-	.Weapons {display: flex; justify-content: center;}
-	.Weapons h1 { border: none; }
-	.points {
-		display: inline-block; width: 20%; top: 7.3rem; position: relative;
+	.Weapons {
+		display: flex;
+		justify-content: center;
 	}
-	.win {color: #0080ff;}
-	.playagain h2 {width: auto;}
+	.Weapons h1 {
+		border: none;
+	}
+	.points {
+		display: inline-block;
+		width: 20%;
+		top: 7.3rem;
+		position: relative;
+	}
+	.win {
+		background-color: aliceblue;
+	}
+	.lose {
+		background-color: lightpink;
+	}
+	.tie {
+		background-color: lightgrey;
+	}
+	.playagain h2 {
+		width: auto;
+	}
 	.playerPoints,
 	.compPoints {
-	    border: 2px solid #0080ff;
-	    margin: 19px;
-	    height: 6.6rem;
+		border: 2px solid #0080ff;
+		margin: 19px;
+		height: 6.6rem;
 	}
 	button {
 		background: none;
-    	border: none;
+		border: none;
 	}
 	.rock,
 	.paper,
@@ -55,11 +81,13 @@
 		float: left;
 		margin: 0 30px;
 	}
-	img#rock:hover, #paper:hover, #scissor:hover {
+	img#rock:hover,
+	#paper:hover,
+	#scissor:hover {
 		transition-timing-function: ease;
-    	transform: scale(1.1);
-    	transition-duration: .2s;
-    	cursor: pointer;
+		transform: scale(1.1);
+		transition-duration: 0.2s;
+		cursor: pointer;
 	}
 </style>
 <html>
@@ -67,12 +95,11 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>Rock Paper Scissors</title>
-
 	</head>
 	<body>
 		<h1>Choose Your Weapon</h1>
 		<div class="container">
-			<div class="Weapons">	
+			<div class="Weapons">
 				<button>
 					<h1>Rock</h1>
 					<img class="rock item" id="rock" src="img/rock.jpg" />
@@ -83,25 +110,30 @@
 				</button>
 				<button>
 					<h1>Scissor</h1>
-					<img class="scissor item" id="scissor" src="img/scissor.jpg" />
+					<img
+						class="scissor item"
+						id="scissor"
+						src="img/scissor.jpg"
+					/>
 				</button>
 			</div>
-			
+
 			<div class="choices">
 				<div class="chosen"></div>
 				<div class="results"></div>
-			</div>	
+			</div>
 		</div>
-   
+
 		<div class="points">
 			<div>
 				<div class="playerPoints"><h3>Player</h3></div>
 				<div class="compPoints"><h3>Computer</h3></div>
-				<div class="playagain"><h2><a href="#">Play Again</a></h2></div>
+				<div class="playagain">
+					<h2><a href="#">Play Again</a></h2>
+				</div>
 			</div>
 		</div>
 
-
-	  <script src="script.js"></script>
+		<script src="script.js"></script>
 	</body>
 </html>

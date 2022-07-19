@@ -1,7 +1,7 @@
 "use strict";
 
-let count =0;
-let compCount =0;
+let count = 0;
+let compCount = 0;
 
 const selectItem = document.querySelectorAll(".item");
 const container = document.querySelector(".container");
@@ -16,7 +16,9 @@ const h2Player = document.createElement("h2");
 const h2Comp = document.createElement("h2");
 
 //Results per round vars
-const results = document.createElement("h2");
+const resultsWin = document.createElement("h2");
+const resultsLose = document.createElement("h2");
+const resultsTie = document.createElement("h2");
 const pointsPlayer = document.createElement("h3");
 const pointsComp = document.createElement("h3");
 
@@ -30,26 +32,31 @@ function outPutResults(el, text) {
 }
 function outPutPoints(el, count, userPoints) {
 	el.textContent = count;
-	if( count === 5) el.classList.add('win');
+	if (count === 5) el.classList.add("win");
 	userPoints.appendChild(el);
 }
+function resultColor(el, word) {
+	//use output
+	if (output.textContent === el.textContent) {
+		el.classList.add(word);
+	}
+}
 function play() {
-	count = 0; compCount = 0;
-	
+	count = 0;
+	compCount = 0;
+
 	//Initialize player scores to 0 and output
 	outPutPoints(pointsPlayer, count, playerPoints);
 	outPutPoints(pointsComp, compCount, compPoints);
 
-	selectItem.forEach( (item) =>
-		item.addEventListener("click", playRound)
-	);
-}
-function reset(){
-	selectItem.forEach((item) => 
-		item.removeEventListener('click', playRound)
-	);
-}
+	selections.textContent = "";
+	output.textContent = "";
 
+	selectItem.forEach((item) => item.addEventListener("click", playRound));
+}
+function reset() {
+	selectItem.forEach((item) => item.removeEventListener("click", playRound));
+}
 
 const computerPlay = function () {
 	// Will randomly return Rock, paper, scissors
@@ -58,7 +65,7 @@ const computerPlay = function () {
 	let randChoice = choices[num];
 	let rand = randChoice.toLowerCase();
 	outPutChoices(h2Comp, rand, "Computer");
-	
+
 	return rand;
 };
 
@@ -72,38 +79,43 @@ const playRound = function (e) {
 	compChoice.toLowerCase();
 
 	// Logic where choices happen
-	
 	if (playerChoice === compChoice) {
-		outPutResults(results,"Tie. No points awarded. Try again.");
-	} 
-	else if (
+		outPutResults(resultsTie, "Tie. No points awarded. Try again.");
+		resultColor(resultsTie, "tie");
+	} else if (
 		(playerChoice === "rock" && compChoice === "scissor") ||
 		(playerChoice === "scissor" && compChoice === "paper") ||
 		(playerChoice === "paper" && compChoice === "rock")
 	) {
-		outPutResults( results, `You Win!, ${playerChoice} beats ${compChoice}`);
+		outPutResults(
+			resultsWin,
+			`You Win!, ${playerChoice} beats ${compChoice}`
+		);
+		resultColor(resultsWin, "win");
 		count++;
-
 		//output count each time
 		outPutPoints(pointsPlayer, count, playerPoints);
 	} else {
-		outPutResults( results, `You Lose ${compChoice} beats ${playerChoice}`);
+		outPutResults(
+			resultsLose,
+			`You Lose ${compChoice} beats ${playerChoice}`
+		);
+		resultColor(resultsLose, "lose");
 		compCount++;
 
 		//output count each time
 		outPutPoints(pointsComp, compCount, compPoints);
 	}
 
-
-	if(count === 5 ) {
+	if (count === 5) {
 		//player Wins
-		outPutPoints(pointsPlayer, 'PLAYER WINS', playerPoints);
+		outPutPoints(pointsPlayer, "PLAYER WINS", playerPoints);
 		reset();
-	} 
+	}
 	if (compCount === 5) {
-		outPutPoints(pointsComp, 'COMPUTER WINS', compPoints);
+		outPutPoints(pointsComp, "COMPUTER WINS", compPoints);
 		reset();
 	}
 };
 play();
-playAgain.addEventListener('click', play);
+playAgain.addEventListener("click", play);
