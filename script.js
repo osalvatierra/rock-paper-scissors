@@ -56,6 +56,7 @@ function play() {
 }
 function reset() {
 	selectItem.forEach((item) => item.removeEventListener("click", playRound));
+	// choices.lastElementChild.classList.remove("tie", "win", "lose");
 }
 
 const computerPlay = function () {
