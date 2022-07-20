@@ -49,6 +49,9 @@ function play() {
 	outPutPoints(pointsPlayer, count, playerPoints);
 	outPutPoints(pointsComp, compCount, compPoints);
 
+	btn.forEach((el) => (el.style.pointerEvents = "auto"));
+
+
 	selections.textContent = "";
 	output.textContent = "";
 	choices.lastElementChild.classList.remove("tie", "win", "lose");

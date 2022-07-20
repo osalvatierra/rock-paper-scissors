@@ -35,17 +35,15 @@
 		margin: 3rem 0 0;
 	}
 	.container {
-		width: 70%;
+		width: -webkit-fill-available;
 		float: left;
 		padding: 1rem;
-		border: solid;
-		border-color: #5f9fa1;
 		margin: 20px;
 		padding: 2rem;
 		background-color: aliceblue;
 	}
 	.Weapons {
-		display: flex;
+		display: block;
 		justify-content: center;
 	}
 	.Weapons h1 {
@@ -53,9 +51,8 @@
 	}
 	.points {
 		display: inline-block;
-		width: 20%;
-		top: 7.3rem;
-		position: relative;
+		width: 100%;
+
 	}
 	.win, .lose, .tie {
 		text-align: center;
@@ -77,13 +74,15 @@
 		background-color: lightgrey;
 	}
 	.playagain h2 {
-		width: auto;
+		width: auto; padding: 1rem;
 	}
 	.playerPoints,
-	.compPoints {
+	.compPoints, .playagain {
 		border: 2px solid #0080ff;
 		margin: 19px;
-		height: 6.6rem;
+		height: 6.6rem; 
+		float: left;
+		width:  30%;
 	}
 	button {
 		background: none;
@@ -92,7 +91,7 @@
 	.rock,
 	.paper,
 	.scissor {
-		width: 250px;
+		width: 300px;
 		position: relative;
 		float: left;
 		margin: 0 30px;
@@ -113,9 +112,16 @@
 		<title>Rock Paper Scissors</title>
 	</head>
 	<body>
-		
+		<div class="points">
+			<div>
+				<div class="playerPoints"><h3>Player</h3></div>
+				<div class="compPoints"><h3>Computer</h3></div>
+				<div class="playagain">
+					<h3><a href="#">Play Again</a></h3>
+				</div>
+			</div>
+		</div>
 		<div class="container">
-			<h1>Choose Your Weapon</h1>
 			<div class="Weapons">
 				<button>
 					<h1>Rock</h1>
@@ -138,16 +144,6 @@
 			<div class="choices">
 				<div class="chosen"></div>
 				<div class="results"></div>
-			</div>
-		</div>
-
-		<div class="points">
-			<div>
-				<div class="playerPoints"><h3>Player</h3></div>
-				<div class="compPoints"><h3>Computer</h3></div>
-				<div class="playagain">
-					<h2><a href="#">Play Again</a></h2>
-				</div>
 			</div>
 		</div>
 
