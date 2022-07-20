@@ -51,13 +51,23 @@
 		top: 7.3rem;
 		position: relative;
 	}
-	.win {
-		background-color: aliceblue;
+	.win, .lose, .tie {
+		text-align: center;
+		padding: 1rem;
+		border: solid;
+		border-color: #5f9fa1;
+		margin: 20px;
+		padding: 2rem;
+		font-size: 20px;
+    	font-weight: bold;
 	}
-	.lose {
+	.win, .pWin { 
+		background-color: aliceblue;
+	 }
+	.lose, .pLose {
 		background-color: lightpink;
 	}
-	.tie {
+	.tie, .pTie {
 		background-color: lightgrey;
 	}
 	.playagain h2 {

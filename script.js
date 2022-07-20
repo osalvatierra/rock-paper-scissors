@@ -6,6 +6,7 @@ let compCount = 0;
 const selectItem = document.querySelectorAll(".item");
 const container = document.querySelector(".container");
 let selections = document.querySelector(".chosen");
+let choices = document.querySelector(".choices");
 let output = document.querySelector(".results");
 let playerPoints = document.querySelector(".playerPoints");
 let compPoints = document.querySelector(".compPoints");
@@ -28,12 +29,15 @@ function outPutChoices(el, userChoice, user) {
 }
 function outPutResults(output, text, style) {
 	output.textContent = text;
+	if (output.className !== style) output.className = '';
+
 	output.classList.add(style);
 	//output.appendChild(h2);
 }
 function outPutPoints(el, count, userPoints) {
 	el.textContent = count;
-	if (count === 5) el.classList.add("win");
+	if (count === 5) el.classList.add("pWin");
+	if (count < 5)  el.classList.remove("pWin");
 	userPoints.appendChild(el);
 }
 function play() {
@@ -46,6 +50,7 @@ function play() {
 
 	selections.textContent = "";
 	output.textContent = "";
+	choices.lastElementChild.classList.remove("tie", "win", "lose");
 
 	selectItem.forEach((item) => item.addEventListener("click", playRound));
 }
