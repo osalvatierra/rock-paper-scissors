@@ -11,6 +11,7 @@ let output = document.querySelector(".results");
 let playerPoints = document.querySelector(".playerPoints");
 let compPoints = document.querySelector(".compPoints");
 let playAgain = document.querySelector(".playagain");
+let btn = [...document.getElementsByTagName("button")];
 
 //Player vars
 const h2Player = document.createElement("h2");
@@ -29,7 +30,7 @@ function outPutChoices(el, userChoice, user) {
 }
 function outPutResults(output, text, style) {
 	output.textContent = text;
-	if (output.className !== style) output.className = '';
+	if (output.className !== style) output.className = "";
 
 	output.classList.add(style);
 	//output.appendChild(h2);
@@ -37,7 +38,7 @@ function outPutResults(output, text, style) {
 function outPutPoints(el, count, userPoints) {
 	el.textContent = count;
 	if (count === 5) el.classList.add("pWin");
-	if (count < 5)  el.classList.remove("pWin");
+	if (count < 5) el.classList.remove("pWin");
 	userPoints.appendChild(el);
 }
 function play() {
@@ -56,7 +57,8 @@ function play() {
 }
 function reset() {
 	selectItem.forEach((item) => item.removeEventListener("click", playRound));
-	// choices.lastElementChild.classList.remove("tie", "win", "lose");
+
+	btn.forEach((el) => (el.style.pointerEvents = "none"));
 }
 
 const computerPlay = function () {
