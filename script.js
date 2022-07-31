@@ -28,9 +28,7 @@ function outPutChoices(el, userChoice, user) {
 function outPutResults(output, text, style) {
 	output.textContent = text;
 	if (output.className !== style) output.className = "";
-
 	output.classList.add(style);
-	//output.appendChild(h2);
 }
 function outPutPoints(el, count, userPoints) {
 	el.textContent = count;
@@ -94,7 +92,6 @@ const playRound = function (e) {
 	} else {
 		outPutResults(output,`You Lose ${compChoice} beats ${playerChoice}`,"lose");
 		compCount++;
-
 		outPutPoints(pointsComp, compCount, compPoints);
 	}
 
