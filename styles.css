@@ -1,3 +1,4 @@
+body {margin: 0;}
 h1 {
 	width: 100%;
 	text-align: center;
@@ -10,9 +11,6 @@ h1 {
 }
 h2 {
 	text-align: center;
-	padding: 1rem;
-	border: solid;
-	border-color: #5f9fa1;
 	width: 100%;
 	margin: 20px;
 	padding: 2rem;
@@ -80,9 +78,6 @@ h3 {
 .playerPoints,
 .compPoints,
 .playagain {
-	border: 2px solid #0080ff;
-	margin: 19px;
-	height: 8.6rem;
 	float: left;
 	width: 28%;
 	font-size: 25px;

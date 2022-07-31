@@ -32,8 +32,8 @@ function outPutResults(output, text, style) {
 }
 function outPutPoints(el, count, userPoints) {
 	el.textContent = count;
-	if (count === 5) el.classList.add("pWin");
-	if (count < 5) el.classList.remove("pWin");
+	if (count === 5) userPoints.classList.add("pWin");
+	if (count < 5) userPoints.classList.remove("pWin");
 	userPoints.appendChild(el);
 }
 function play() {
