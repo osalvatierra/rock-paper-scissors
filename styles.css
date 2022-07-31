@@ -1,0 +1,114 @@
+h1 {
+	width: 100%;
+	text-align: center;
+	height: 5rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: solid;
+	border-color: #5c8bb0;
+	border-radius: 10px;
+}
+h2 {
+	text-align: center;
+	padding: 1rem;
+	border: solid;
+	border-color: #5f9fa1;
+	width: 100%;
+	margin: 20px;
+	padding: 2rem;
+}
+h3 {
+	text-align: center;
+}
+.choices {
+	width: 100%;
+	display: block;
+}
+.chosen,
+.results {
+	display: flex;
+	justify-content: center;
+	margin: 3rem 0 0;
+}
+.container {
+	width: -webkit-fill-available;
+	float: left;
+	padding: 1rem;
+	margin: 20px;
+	padding: 2rem;
+	background-color: aliceblue;
+}
+.Weapons {
+	display: flex;
+	justify-content: center;
+}
+.Weapons h1 {
+	border: none;
+}
+.points {
+	display: inline-block;
+	width: 100%;
+}
+.win,
+.lose,
+.tie {
+	text-align: center;
+	padding: 1rem;
+	border: solid;
+	border-color: #5f9fa1;
+	margin: 20px;
+	padding: 2rem;
+	font-size: 20px;
+	font-weight: bold;
+}
+.win,
+.pWin {
+	background-color: #78c0ff;
+}
+.lose,
+.pLose {
+	background-color: #ffb5b580;
+}
+.tie,
+.pTie {
+	background-color: lightgrey;
+}
+.playagain h2 {
+	width: auto;
+	padding: 1rem;
+}
+.playerPoints,
+.compPoints,
+.playagain {
+	border: 2px solid #0080ff;
+	margin: 19px;
+	height: 6.6rem;
+	float: left;
+	width: 30%;
+}
+button {
+	background: none;
+	border: none;
+}
+.rock,
+.paper,
+.scissor {
+	width: 300px;
+	position: relative;
+	float: left;
+	margin: 0 30px;
+}
+img#rock:hover,
+#paper:hover,
+#scissor:hover {
+	transition-timing-function: ease;
+	transform: scale(1.1);
+	transition-duration: 0.2s;
+	cursor: pointer;
+}
+@media screen and (max-width: 1170px) {
+	.Weapons {
+		display: block;
+	}
+}
