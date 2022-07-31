@@ -5,9 +5,8 @@ h1 {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border: solid;
-	border-color: #5c8bb0;
-	border-radius: 10px;
+	font-size: 31px;
+	color: #075e67;
 }
 h2 {
 	text-align: center;
