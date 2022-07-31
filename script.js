@@ -4,7 +4,6 @@ let count = 0;
 let compCount = 0;
 
 const selectItem = document.querySelectorAll(".item");
-const container = document.querySelector(".container");
 let selections = document.querySelector(".chosen");
 let choices = document.querySelector(".choices");
 let output = document.querySelector(".results");
@@ -18,8 +17,6 @@ const h2Player = document.createElement("h2");
 const h2Comp = document.createElement("h2");
 
 //Results per round vars
-const resultsWin = document.createElement("h2");
-const resultsLose = document.createElement("h2");
 const resultsTie = document.createElement("h2");
 const pointsPlayer = document.createElement("h3");
 const pointsComp = document.createElement("h3");
@@ -51,7 +48,6 @@ function play() {
 
 	btn.forEach((el) => (el.style.pointerEvents = "auto"));
 
-
 	selections.textContent = "";
 	output.textContent = "";
 	choices.lastElementChild.classList.remove("tie", "win", "lose");
@@ -60,12 +56,10 @@ function play() {
 }
 function reset() {
 	selectItem.forEach((item) => item.removeEventListener("click", playRound));
-
 	btn.forEach((el) => (el.style.pointerEvents = "none"));
 }
 
 const computerPlay = function () {
-	// Will randomly return Rock, paper, scissors
 	let num = Math.floor(Math.random() * 3);
 	const choices = ["Rock", "Paper", "Scissor"];
 	let randChoice = choices[num];
@@ -84,41 +78,27 @@ const playRound = function (e) {
 	const compChoice = computerPlay();
 	compChoice.toLowerCase();
 
-	function resultColor(el) {
-		output.appendChild(el);
-	}
+	function resultColor(el) { output.appendChild(el); }
 
 	// Logic where choices happen
 	if (playerChoice === compChoice) {
 		outPutResults(output, "Tie. No points awarded. Try again.", "tie");
-		//resultColor(resultsTie);
 	} else if (
 		(playerChoice === "rock" && compChoice === "scissor") ||
 		(playerChoice === "scissor" && compChoice === "paper") ||
 		(playerChoice === "paper" && compChoice === "rock")
 	) {
-		outPutResults(
-			output,
-			`You Win!, ${playerChoice} beats ${compChoice}`,
-			"win"
-		);
+		outPutResults(output,`You Win!, ${playerChoice} beats ${compChoice}`,"win");
 		count++;
-		//output count each time
 		outPutPoints(pointsPlayer, count, playerPoints);
 	} else {
-		outPutResults(
-			output,
-			`You Lose ${compChoice} beats ${playerChoice}`,
-			"lose"
-		);
+		outPutResults(output,`You Lose ${compChoice} beats ${playerChoice}`,"lose");
 		compCount++;
 
-		//output count each time
 		outPutPoints(pointsComp, compCount, compPoints);
 	}
 
 	if (count === 5) {
-		//player Wins
 		outPutPoints(pointsPlayer, "PLAYER WINS", playerPoints);
 		reset();
 	}
